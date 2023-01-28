@@ -1,7 +1,6 @@
 import './App.css';
 import NewUserForm from './components/Users/NewUserForm'
 import { useState } from 'react';
-import Card from './components/UI/Card';
 
 function App() {
   const [users, setUsers] = useState([]);
