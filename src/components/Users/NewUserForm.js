@@ -9,6 +9,8 @@ const NewUserForm = (_props) => {
 
     const submitHandler = (event) => {
         event.preventDefault();
+        if (username.trim().length === 0 || age.trim().length === 0 || +age < 1)
+            return;
         const user = {
             username: username,
             age: age,
