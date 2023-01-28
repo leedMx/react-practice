@@ -1,41 +1,40 @@
 import { useState } from "react"
+import Card from "../UI/Card";
+import classes from './AddUser.module.css';
 
 const NewUserForm = (_props) => {
-    const [isValid, setValid] = useState(false);
-    const [user, setUser] = useState("");
-    const [age, setAge] = useState(1);
+    const [username, setUsername] = useState("");
+    const [age, setAge] = useState("");
 
     const submitHandler = (event) => {
         event.preventDefault();
-        const user = {username: "username", age: 33, id: Math.random().toString()}
-        _props.onAddUser(user);
+        const user = {
+            username: username,
+            age: age,
+            id: Math.random().toString()
+        }
+        console.log(user);
+        setUsername('');
+        setAge('');
     }
 
     const userChangeHandler = (event) => {
-        setUser(event.target.value);
-        const validity = !(user.trim === '');
-        setValid(validity)
-        if (!isValid)
-            _props.onErrorMessage("Invalid Username");
+        setUsername(event.target.value);
     }
 
     const ageChangeHandler = (event) => {
-        const value = event.target.value;
-        const validity = value > 0;
-        setValid(validity);
-        if (!isValid)
-            _props.onErrorMessage("Invalid age value");
+        setAge(event.target.value);
     }
 
-    return <div>
+    return (<Card className={classes.input}>
         <form onSubmit={submitHandler}>
             <label htmlFor="user">User:</label>
-            <input type='text' id="user" onChange={userChangeHandler} value={user}></input><br />
+            <input type='text' id="user" onChange={userChangeHandler} value={username} />
             <label htmlFor="age">Age</label>
-            <input type='number' id="age" min='0' max='99' onChange={ageChangeHandler}></input><br />
+            <input type='number' id="age" min='0' max='99' onChange={ageChangeHandler} value={age} />
             <button type="submit">Add User</button>
         </form>
-    </div>;
+    </Card>);
 }
 
 export default NewUserForm
