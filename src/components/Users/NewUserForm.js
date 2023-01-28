@@ -16,7 +16,7 @@ const NewUserForm = (_props) => {
             age: age,
             id: Math.random().toString()
         }
-        console.log(user);
+        _props.onAddUser(user);
         setUsername('');
         setAge('');
     }
