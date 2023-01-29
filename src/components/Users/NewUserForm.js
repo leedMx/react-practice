@@ -1,7 +1,7 @@
 import { useState } from "react"
 import Button from "../UI/Button";
 import Card from "../UI/Card";
-import classes from './AddUser.module.css';
+import classes from './NewUserForm.module.css';
 
 const NewUserForm = (_props) => {
     const [username, setUsername] = useState("");
