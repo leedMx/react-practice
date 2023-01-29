@@ -7,16 +7,23 @@ import classes from './NewUserForm.module.css';
 const NewUserForm = (_props) => {
     const [username, setUsername] = useState("");
     const [age, setAge] = useState("");
+    const [error, setError] = useState();
 
     const submitHandler = (event) => {
         event.preventDefault();
         if (username.trim().length === 0 || age.trim().length === 0) {
-            _props.onErrorMessage("You must fill both values")
+            setError({
+                title: "Invalid input",
+                message: "Please enter a valid non empty input"
+            })
             return;
         }
 
         if (+age < 1) {
-            _props.onErrorMessage("Incorrect age value")
+            setError({
+                title:"Invalid age",
+                message: "Age should be a positive number"
+            })
             return;
         }
 
@@ -38,8 +45,12 @@ const NewUserForm = (_props) => {
         setAge(event.target.value);
     }
 
+    const clearErrorHandler = () => {
+        setError(null);
+    }
+
     return (<div>
-        <ErrorModal title="Title" message="message"/>
+        {error && <ErrorModal title={error.title} message={error.message} onConfirm={clearErrorHandler}/>}
         <Card className={classes.input}>
             <form onSubmit={submitHandler}>
                 <label htmlFor="user">User:</label>

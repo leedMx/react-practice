@@ -17,7 +17,7 @@ function App() {
 
   return (
     <div className="App">
-      <NewUserForm onErrorMessage={errorMessageHandler} onAddUser={addUserHandler}/>
+      <NewUserForm onAddUser={addUserHandler}/>
       <UsersList users={users} />
     </div>
   );
