@@ -9,8 +9,16 @@ const NewUserForm = (_props) => {
 
     const submitHandler = (event) => {
         event.preventDefault();
-        if (username.trim().length === 0 || age.trim().length === 0 || +age < 1)
+        if (username.trim().length === 0 || age.trim().length === 0){
+            _props.onErrorMessage("You must fill both values")
             return;
+        }
+
+        if ( +age < 1){
+            _props.onErrorMessage("Incorrect age value")
+            return;
+        }
+        
         const user = {
             username: username,
             age: age,

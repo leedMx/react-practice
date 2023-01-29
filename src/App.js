@@ -12,9 +12,7 @@ function App() {
   }
 
   const addUserHandler = (user) => {
-    console.log(user);
     setUsers( prevUsers => { return [...prevUsers, user]})
-    console.log(users)
   }
 
   return (
