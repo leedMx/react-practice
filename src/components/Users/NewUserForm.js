@@ -49,7 +49,7 @@ const NewUserForm = (_props) => {
         setError(null);
     }
 
-    return (<div>
+    return (<>
         {error && <ErrorModal title={error.title} message={error.message} onConfirm={clearErrorHandler}/>}
         <Card className={classes.input}>
             <form onSubmit={submitHandler}>
@@ -60,7 +60,7 @@ const NewUserForm = (_props) => {
                 <Button type="submit">Add User</Button>
             </form>
         </Card>
-    </div>);
+    </>);
 }
 
 export default NewUserForm
